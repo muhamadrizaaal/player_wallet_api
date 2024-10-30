@@ -5,6 +5,7 @@ import (
 	"player-wallet-api/config"
 	"player-wallet-api/internal/delivery/http/router"
 	"player-wallet-api/pkg/database"
+	"player-wallet-api/pkg/utils"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
@@ -34,7 +35,7 @@ func main() {
 	e := echo.New()
 
 	// Set up Validator
-	e.Validator = &CustomValidator{validator: validator.New()}
+	e.Validator = &utils.CustomValidator{Validator: validator.New()}
 
 	// Middleware
 	e.Use(middleware.Logger())
